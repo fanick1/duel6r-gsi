@@ -1,7 +1,8 @@
 # Game State Integration backend for Duel6r
 
-provides endpoint on url `http://127.0.0.1:3000/api/duel6r-gsi`, any JSON data POSTed to this endpoint will be available
+Provides endpoint on url `http://127.0.0.1:3000/api/duel6r-gsi`, any JSON data POSTed to this endpoint will be available
 for GETing.
+Simple minimalistic viewer of the data is implemented in `public/index.html` - navigate to `http://127.0.0.1:3000/` to see it in action.
 
 # Usage
 
