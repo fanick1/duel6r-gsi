@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head><script>
+	function renderPlayers(gameState){
+		let root = document.getElementById('players');
+		root.innerHTML = '';
+		let players = gameState.players || [];
+		
+		players.forEach( (player) => {
+			let playerRoot = document.createElement('div');
+			playerRoot.innerText = player.name + ' ' + player.points + ' PTS ' + (player.bonus != 'none' ? player.bonus : '') + ' ' + player.weapon + ' ' + (player.alive ? '' : 'DEAD')
+			root.appendChild(playerRoot);
+		})
+	}
+	
+	function render(gameState){
+		if(!gameState){
+			return
+		}
+		if(gameState.state == 'GAME'){
+			renderPlayers(gameState);
+		}
+	}
+	
+	function fetchData(){
+		fetch('/api/duel6r-gsi')
+		  .then(response => response.json())
+		  .then(data => {
+		  		render(data)
+		  });
+	}
+	
+	window.addEventListener('DOMContentLoaded', (event) => {
+		setInterval(fetchData, 100);
+	})
+</script></head>
+<body >
+	Duel game state integration stats
+	<div id="players"></div>
+</body>
+</html>
