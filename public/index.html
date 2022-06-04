@@ -30,9 +30,29 @@
 		  });
 	}
 	
+
+	function startFetchingData() {
+		const socket = new WebSocket(((window.location.protocol === "https:") ? "wss://" : "ws://") + window.location.host + "/api/duel6r-gsi-ws");
+
+		// Connection opened
+		socket.addEventListener('open', function (event) {
+			socket.send('Hello Server!');
+		});
+	
+		// Listen for messages
+		socket.addEventListener('message', function (event) {
+			console.log('Message from server ', event.data);
+			const gameData = JSON.parse(event.data)
+			render(gameData)
+		});
+	}
+
 	window.addEventListener('DOMContentLoaded', (event) => {
-		setInterval(fetchData, 100);
+		fetchData()
+		startFetchingData()
 	})
+
+
 </script></head>
 <body >
 	Duel game state integration stats

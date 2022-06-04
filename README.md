@@ -4,6 +4,10 @@ Provides endpoint on url `http://127.0.0.1:3000/api/duel6r-gsi`, any JSON data P
 for GETing.
 Simple minimalistic viewer of the data is implemented in `public/index.html` - navigate to `http://127.0.0.1:3000/` to see it in action.
 
+# Websocket
+
+The backend exposes websocket at `ws://127.0.0.1:3000/api/duel6r-gsi-ws` for reads
+
 # Usage
 
 `npm install`
@@ -24,3 +28,8 @@ so in case you don't need to point to different URL you can just run:
 ./duel6r -publish
 ```
 
+# CURL test
+
+```
+curl -X POST http://localhost:3000/api/duel6r-gsi/ -d '{"state":"GAME"}' -H "Content-Type: application/json" -v
+```
