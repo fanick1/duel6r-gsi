@@ -8,6 +8,14 @@ const expressWs = require('express-ws');
 let state = {};
 expressWs(app)
 app.use(bodyParser.json())
+
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.use('/', serveStatic(path.join(__dirname, 'public')));
 
 app.post('/api/duel6r-gsi', function(request, response) {
