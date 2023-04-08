@@ -1,10 +1,8 @@
 
-import express from 'express'
-import * as fs from 'fs'
-import * as path from 'path'
 import bodyParser from 'body-parser'
-import serveStatic from 'serve-static'
+import express from 'express'
 import expressWs from 'express-ws'
+import serveStatic from 'serve-static'
 import * as ws from 'ws'
 
 const {app} = expressWs(express())
@@ -23,8 +21,6 @@ app.use(function (req, res, next) {
 app.use('/', serveStatic('public'))
 
 app.post('/api/duel6r-gsi', function (request, response) {
-    //  console.log('POST /')
-    //  console.dir(request.body)
     console.log('received state')
     state = request.body
     broadcastState()
@@ -139,4 +135,4 @@ app.listen(port)
 console.log(`Listening at http://localhost:${port}`)
 
 
-export {} 
+export { }

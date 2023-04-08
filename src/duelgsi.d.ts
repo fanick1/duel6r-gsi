@@ -18,8 +18,8 @@ declare namespace DuelGSI {
 
     type DuelState = EmptyState | MenuState | GameState
 
-    type Weapon = '' 
-    | 'unarmed' 
+    type Weapon = ''
+    | 'unarmed'
     | 'pistol'
     | 'bazooka'
     | 'lightning'
@@ -39,26 +39,27 @@ declare namespace DuelGSI {
     | 'shit thrower'
 
     type PlayerRecord = {
-        alive: boolean
+        // see Game.cpp Game::getGameState()
         name: string
-        bonus: string
+        team: number
+        ping: number
+
+        reloadTime: number // goes from 0 up to reloadInterval
+        reloadInterval: number
+        alive: boolean
+        timeSinceHit: number // elapsed time since player took damage
+
         health: number
         air: number //breath under water
-
-        team: number
-
-        ammo: number
-        weapon: Weapon
-
         points: number //score
         kills: number // kills (adds to score)
         deaths: number // subtracts from score
         roundKills: number
-        ping: number
-        
-        bonusRemainingTime: number 
-        reloadTime: number // goes from 0 up to reloadInterval
-        reloadInterval: number
-        timeSinceHit: number // elapsed time since player took damage
+
+        bonus: string
+        bonusRemainingTime: number
+
+        ammo: number
+        weapon: Weapon
     }
 }
